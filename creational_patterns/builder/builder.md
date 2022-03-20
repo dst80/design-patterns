@@ -5,7 +5,7 @@ The builder pattern separate the construction of a **complex** object from its r
 > **In contrast to the (Abstract) Factory pattern the builder pattern builds the object step by step and returns it at a final step. Abstract Factories provide a family of products und return it immediately.**
 
 ```plantuml
-@startuml
+@startuml simple_builder
 !theme plain
 object "**Director**" as Director {
     Construct ()
@@ -44,7 +44,7 @@ basic example to build different TextFormat-Files with the builder
 pattern
 
 ```plantuml
-@startuml
+@startuml builder_exmple
 !theme plain
 allowmixing
 skinparam nodesep 50

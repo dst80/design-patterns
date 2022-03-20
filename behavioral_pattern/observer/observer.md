@@ -82,7 +82,7 @@ The Push Observer Pattern is the typical observer design. During the "*notify ()
 ### **Pull Observer**
 
 ```plantuml
-@startuml push_observer
+@startuml pull_observer
 !theme plain
 skinparam nodesep 100
 skinparam ranksep 50
@@ -153,11 +153,11 @@ CurrentConditionDisplay --[hidden]d ThreeDayForecastDisplay
 
 The Pull Observer Pattern is an alternative observer design. During the *notify()* call, the *IData* information is pulled from the *Subject* by the *Observer* by calling the *Subject*'s getData() function. This design should be used when synchronization between *Observer* and *Subject* is required (e.g. high-precision clock) or when the data is so large that copying takes a while.
 
-*Advantages:*
+***Advantages:***
 
 - In heavy load processes during the notify call Data is in sync.
 
-*Disadvantages:*
+***Disadvantages:***
 
 - *Observer* knows something about the *Subject* because the *Observer* invoked a function of the *Subject*
 - Another layer of abstraction is required

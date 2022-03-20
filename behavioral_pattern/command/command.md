@@ -1,10 +1,11 @@
 ## Command Pattern
-The Command Pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action, trigger an event etc. now or later in time. 
+
+The Command Pattern is a behavioral design pattern in which an object is used to encapsulate all information needed to perform an action, trigger an event etc. now or later in time.
 
 Four terms always associated with the *Command* Pattern are *Command*, *Receiver* and *Invoker*. A *Command* object knows about *Receiver* and invokes a method of the Receiver. Values for parameters of the *Receiver* method are stored in the *Command*.
 
 ```plantuml
-@startuml simple_factory
+@startuml command_pattern
 !theme plain
 skinparam nodesep 20
 skinparam ranksep 50
