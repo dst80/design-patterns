@@ -1,63 +1,58 @@
 ## Factory Pattern
+Define an interface for creating an object, but let subclasses decide which class to instantiate. Factory Method lets a class defer instantioation to subclasses.
 
 ```plantuml
-@startuml simple_factory
+@startuml factory
 !theme plain
-left to right direction
-skinparam nodesep 20
-skinparam ranksep 50
-object "**Factory**" as Factory {
-    CreateProductA
-    CreateProductB
+
+skinparam nodesep 35
+skinparam ranksep 10
+together {
+together {
+    object "**ProductConsumer**" as ProductConsumer
+    object "**Factory**" as Factory {
+        CreateProduct
+    }
+    ProductConsumer --> Factory : invoke
+  
+    note right of ProductConsumer
+    Product product = factory.CreateProduct ()
+    end note
+
+    note right of Factory
+    return new ConcreteProduct ()
+    end note
 }
 
 together {
-    object ProductA
-    object ProductB
+    object "**Product**" as Product
+    object "**ConcreteProduct**" as ConcreteProduct
+    Product <|--down ConcreteProduct
 }
-Factory::CreateProductA ..> ProductA : create
-Factory::CreateProductB ..> ProductB : create
+}
+
+Factory -l-> ConcreteProduct : create
+
+
 @enduml
 ```
 
-A factory is a class that generates objects through a function call instead of creating the object through a constructor. The factory serves as a rallying point for creating similar objects that can be grouped together as part of their affiliation (eg. ProductA and ProductB).
+### Usage
 
-The following advantages result from the separation of the object generation and it's usage
+Use Factory Method pattern when
 
-* Unified generation of the object (for all consumers)
-* Replacing the generation of the object is easy
-* Changes in object generation only affect the factory, not its consumers
-* Less coupling between the generated object and its comsumers
+* a class can't anticipate the class of objects it must create
+* a class wants its subclasses to specify the objects it creates
+* classes delegate responsibility to one of several helper subclasses, and want to localize the khnowledge of which helper subclass is the delegate.
 
-```plantuml
-@startuml factory_with_interface
-!theme plain
-left to right direction
-skinparam nodesep 20
-skinparam ranksep 50
-object "**Factory**" as Factory {
-    IProductA CreateProductA
-    IProductB CreateProductB
-}
+### Advantages and Disadvantages
 
-together {
-    together {
-        object "**//IProductA//**" as IProductA
-        object "**ProductA**" as ProductA
-    }
-        together {
-        object "**//IProductB//**" as IProductB
-        object "**ProductB**" as ProductB
-    }
-}
-Factory::CreateProductA ..> ProductA : create
-Factory::CreateProductB ..> ProductB : create
+* Advantages:
+  * more separation of responsibility (way to SRP and DI)
+  * unify the generation of objects (for all consumers)
+  * creation knowlegde should be stored at one place
+  * changes in object generation only should effect the factory but not the consumers.
+* Disadvantages:
+  * more code to write
+  * Creation process is slower
 
-IProductA <-- ProductA
-IProductB <-- ProductB
-@enduml
-```
-
-By introducing interfaces as returning types from the factory, the coupling can further reduced.
-Using a unified CreateFunction (e.g. CreateProduct) that creates the appropriate object via a parameter (enum or string) decouples the object even more, since the decision rests entirely with the factory. However, this only makes sense if the offered interface is sufficient for the consumer.
-A complete decoupling, however, can only realized with the abstraction of the factory itself "see Abstract Factory".
