@@ -4,7 +4,7 @@
 Ensure a class has only instance, and provide a global point of access to it.
 
 ```plantuml
-@startuml
+@startuml singleton
 !theme plain
 
 skinparam nodesep 50

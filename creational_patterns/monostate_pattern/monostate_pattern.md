@@ -3,7 +3,7 @@ The Monostate pattern is a variation of the singleton pattern.
 It enforcing singular behavior, without imposing constraints on structure.  
 
 ```plantuml
-@startuml
+@startuml monostate
 !theme plain
 
 skinparam nodesep 50
