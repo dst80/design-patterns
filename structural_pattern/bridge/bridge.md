@@ -23,9 +23,11 @@ skinparam nodesep 50
 skinparam ranksep 50
 object "**Client**" as client
 together {
+  
 object "**Abstraction**" as abstraction {
     Operation ()
 }
+
 object "**Refines Abstraction**" as refined_abstraction
 }
 together {

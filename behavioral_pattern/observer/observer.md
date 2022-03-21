@@ -16,7 +16,6 @@ Depending on the used Observer pattern type, the updated information is either p
 skinparam nodesep 50
 skinparam ranksep 50
 together {
-
     object "//<<Interface>>//\n**//ISubject//**" as ISubject {
         attach (IObserver) 
         detach (IObserver)
