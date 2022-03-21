@@ -55,7 +55,28 @@ together {
 
 client -r--> component
 component::Operation <--o composite : children
-
-
 @enduml
 ```
+
+### Usage
+
+Use the composite pattern when
+
+* part-whole hierachies of objects should be represented
+* clients should be able to ignore the difference between compositions of objects (Composite) and individual objects (Leaf). Clients will use both type of objects in a composite structure uniformly
+
+#### Advantages
+
+* client can be simple
+* client has not to be changed when adding new Composite elements
+* Compose complex objects based on simple ones
+* easy to create new kinds of Composite elements
+* simple and general design
+
+#### Disadvantages
+
+* hard to restrict composition (Composition of an object limited by a specific set of Components)
+* complex objects are hard to analyse for a specific Component
+* loosing type safty on compile type for the components.
+
+> In the case of the periodic processing of components of the composite, the composite pattern has the disadvantage that each composite must first be searched for the component before the component can be processed. This can be time-consuming for large objects. It is therefore advisable to switch to the Entity Component System Pattern (ECS) for such problems. Here the component is decoubled from the entity and will be processed in the system.
