@@ -1,13 +1,17 @@
 ## Adapter
 
-Convert the interface of a class into another interface clients expects. Adapter classes work together that couldn't otherwise because they have incompatible interfaces.
+Converts a class's interface into another interface client expects. Adapter classes therefore allow classes that otherwise cannot work together because they have incompatible interfaces.
 
-Adapters can be created using inheritane and using composition. The nomenclature is
+Adapters can be created using inheritance or using composition. The nomenclature is
 
-* **Target** -> defines the domain specific interface that *Client* use
-* **Client** -> collaborates with objects conforming to the *Target* interface
-* **Adaptee** -> defines exising interface that need adapting
-* **Adapter** -> adapts the interface of the *Target* with the interface of the *Adaptee*
+* **Target**
+  * defines the domain specific interface that *Client* use
+* **Client**
+  * collaborates with objects conforming to the *Target* interface
+* **Adaptee**
+  * defines exising interface that need adapting
+* **Adapter**
+  * adapts the interface of the *Target* with the interface of the *Adaptee*
 
 ---
 
@@ -79,6 +83,6 @@ adaptee <-- adapter : adaptee
 
 Use Adapter pattern when
 
-* you want to use an existing class, but its interface doesn't match the interface you need.
-* you want to create a reusable class that cooperates with an unrelated or unforeseen classes, that is, classes that don't necessarily habe compatible interfaces
-* you need to use serveral existing subclasses, but it's impractical to adapt ther interface by subclassing every one. An object adapter can adapt the interface of its parent class.
+* when an existing class is to be used, but the interface of the class does not match the required interface.
+* to create a reusable class that interoperates with unrelated or unexpected classes, that is, classes that don't necessarily have compatible interfaces.
+* multiple existing subclasses will need to be used, but it is impractical to customize the interface by subclassing all of them. An object adapter can customize the interface to its parent class.
