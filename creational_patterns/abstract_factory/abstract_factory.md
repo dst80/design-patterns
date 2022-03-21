@@ -5,52 +5,57 @@ An abstract factory combines the responsibilities of "summarizing object generat
 ```plantuml
 @startuml abstract_factory
 !theme plain
+hide circle
+hide fields
+hide members
 
 skinparam nodesep 50
 skinparam ranksep 50
-object "**client**" as client
+class "**client**" as client
 together {
-object "//**Abstract Factory**//" as AbstractFactory {
-    CreateProductA
-    CreateProductB
-}
-    object "**Concrete Factory 1**" as ConcreteFactory1{
-        CreateProductA
-        CreateProductB
+    interface "**Abstract Factory**" as abstract_factory {
+        CreateProductA()
+        CreateProductB()
     }
-    object "**Concrete Factory 2**" as ConcreteFactory2 {
-        CreateProductA
-        CreateProductB
+    show abstract_factory members
+    class "**Concrete Factory 1**" as concrete_factory_1{
+        CreateProductA()
+        CreateProductB()
     }
+    show concrete_factory_1 members
+    class "**Concrete Factory 2**" as concrete_factory_2 {
+        CreateProductA()
+        CreateProductB()
+    }
+    show concrete_factory_2 members
+    abstract_factory <|-- concrete_factory_1
+    abstract_factory <|-- concrete_factory_2
 }
+
 together {
     together {
-        object "//**Abstract Product A**//" as AbstractProductA
-        object "**Product A1**" as ProductA1
-        object "**Product A2**" as ProductA2
+        class "**Abstract Product A**" as abstract_product_A
+        class "**Product A1**" as product_A1
+        class "**Product A2**" as product_A2
     }
     together {
-        object "//**Abstract Product B**//" as AbstractProductB
-        object "**Product B1**" as ProductB1
-        object "**Product B2**" as ProductB2
+        class "**Abstract Product B**" as abstract_product_B
+        class "**Product B1**" as product_B1
+        class "**Product B2**" as product_B2
+    }
+    abstract_product_A <|---- product_A1
+    abstract_product_A <|--- product_A2
+    abstract_product_B <|---- product_B1
+    abstract_product_B <|--- product_B2
 }
-}
-client --> AbstractFactory
-client --> AbstractProductA
-client --> AbstractProductB
+client --> abstract_factory
+client --> abstract_product_A
+client --> abstract_product_B
 
-AbstractFactory <|-- ConcreteFactory1
-AbstractFactory <|-- ConcreteFactory2
-
-AbstractProductA <|--- ProductA1
-AbstractProductA <|--- ProductA2
-AbstractProductB <|---- ProductB1
-AbstractProductB <|---- ProductB2
-
-ConcreteFactory1::CreateProductA ..> ProductA1 
-ConcreteFactory1 ..> ProductB1
-ConcreteFactory2::CreateProductA ..> ProductA2
-ConcreteFactory2 ..> ProductB2
+concrete_factory_1::CreateProductA ..> product_A1 
+concrete_factory_1::CreateProductB ..> product_B1
+concrete_factory_2::CreateProductA ..> product_A2
+concrete_factory_2::CreateProductB ..> product_B2
 @enduml
 ```
 

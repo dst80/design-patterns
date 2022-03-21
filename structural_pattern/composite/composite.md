@@ -23,10 +23,11 @@ Assembles objects into tree structures to represent part-whole hierarchies. Comp
 skinparam nodesep 50
 skinparam ranksep 50
 hide circle
+hide fields
 class "**Client**" as client {}
 hide client members
 
-class "//**Component**//" as component {
+interface "**Component**" as component {
     Operation ()
     Add (Component)
     Remove (Component)

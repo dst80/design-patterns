@@ -8,8 +8,8 @@ It enforcing singular behavior, without imposing constraints on structure.
 
 skinparam nodesep 50
 skinparam ranksep 40
-
-object "**Monostate**" as Monostate {
+hide circle
+class "**Monostate**" as mmnostate {
     Get()
     Set(...)
     ---

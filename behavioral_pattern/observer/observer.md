@@ -15,50 +15,47 @@ Depending on the used Observer pattern type, the updated information is either p
 !theme plain
 skinparam nodesep 50
 skinparam ranksep 50
+hide circle
+hide fields
+
 together {
-    object "//<<Interface>>//\n**//ISubject//**" as ISubject {
-        attach (IObserver) 
-        detach (IObserver)
-        notify ()
+    abstract "**Subject**" as Subject {
+        Attach(Observer) 
+        Detach(Observer)
+        Notify()
     }
-    object "**WeatherData**" as WeatherData {
-        attach (IObserver)
-        detach (IObserver)
-        notify ()
+    class "**DataImp**" as DataImp {
+        Attach(Observer)
+        Detach(Observer)
+        Notify()
     }
 }
 
 together {
-    object "//<<Interface>>//\n**//IObserver//**" as IObserver {
-        update (IState)
+    abstract "**Observer**" as Observer {
+        Update(IState)
     }
-    object "//<<Interface>>//\n**//IDisplay//**" as IDisplay {
-        display ()
+    abstract "**Display**" as Display {
+        Display()
     }
-    object "**CurrentConditionDisplay**" as CurrentConditionDisplay {
-        update (IState)
-        display ()
+    class "**Display1**" as Display1 {
+        Update(IState)
+        Display()
     }
-    object "**DayForecastDisplay**" as DayForecastDisplay {
-        update (IState)
-        display ()
+    class "**Display2**" as Display2 {
+        Update(IState)
+        Display()
     }
-    object "**ThreeDayForecastDisplay**" as ThreeDayForecastDisplay {
-        update (IState)
-        display ()
-    }
+    Display <|-- Display1
+    Display <|-- Display2
+    Observer <|-- Display1
+    Observer <|-- Display2
 }
 
-ISubject *- IObserver : ""
-ISubject -> IObserver : call
-ISubject <|-- WeatherData
-IObserver -[hidden] IDisplay
-IDisplay <|-- DayForecastDisplay
-IObserver <|-- DayForecastDisplay
-IDisplay <|--- CurrentConditionDisplay
-IObserver <|--- CurrentConditionDisplay
-IObserver <|---- ThreeDayForecastDisplay
-IDisplay <|---- ThreeDayForecastDisplay
+Subject o- Observer 
+Subject::Notify -> Observer::Update
+Subject <|-- DataImp
+Observer -[hidden] Display
 
 @enduml
 ```
@@ -85,72 +82,68 @@ The Push Observer Pattern is the typical observer design. During the "*notify ()
 !theme plain
 skinparam nodesep 100
 skinparam ranksep 50
+hide fields
+hide circle
+
 together {
-    object "//<<Interface>>//\n**//IData//**" as IData {
-        getData ()
+    interface "**Data**" as Data {
+        GetData()
     }
 
-    object "//<<Interface>>//\n**//ISubject//**" as ISubject {
-        attach (IObserver) 
-        detach (IObserver)
-        notify ()
+    interface "**Subject**" as Subject {
+        Attach(Observer) 
+        Detach(Observer)
+        Notify()
     }
-    object "**WeatherData**" as WeatherData {
-        attach (IObserver)
-        detach (IObserver)
-        notify ()
-
-        getData ()
+    class "**Data Imp**" as DataImp {
+        Attach(Observer)
+        Detach(Observer)
+        Notify()
+        GetData ()
     }
+    Data <|-- DataImp
+    Subject <|-- DataImp
 }
 
 together {
-    object "//<<Interface>>//\n**//IObserver//**" as IObserver {
-        set (IData)
-        update ()
+    together {
+    interface "**Observer**" as Observer {
+        Set(Data)
+        Update()
     }
-    object "//<<Interface>>//\n**//IDisplay//**" as IDisplay {
-        display ()
+    Interface "**Display**" as Display {
+        Paint()
+    }
     }
     together {
-        object "**CurrentConditionDisplay**" as CurrentConditionDisplay {
-            set (IData)
-            update ()
-            display ()
+        class "**Display Imp. 1**" as Display1 {
+            Set(Data)
+            Update()
+            Paint()
         }
-        object "**DayForecastDisplay**" as DayForecastDisplay {
-            set (IData)
-            update ()
-            display ()
-        }
-        object "**ThreeDayForecastDisplay**" as ThreeDayForecastDisplay {
-            set (IData)
-            update ()
-            display ()
+        class "**Display Imp. 2**" as Display2 {
+            Set(Data)
+            Update()
+            Paint()
         }
     }
+    Observer <|-- Display1
+    Observer <|--- Display2
+    Display <|-- Display1
+    Display <|-- Display2
+
 }
 
-ISubject *- IObserver : ""
-ISubject -> IObserver : call
-IData <|-- WeatherData
-ISubject <|-- WeatherData
-IObserver -[hidden] IDisplay
-IDisplay <|-- DayForecastDisplay
-IObserver <|-- DayForecastDisplay
-IDisplay <|--- CurrentConditionDisplay
-IObserver <|--- CurrentConditionDisplay
-IObserver <|---- ThreeDayForecastDisplay
-IDisplay <|---- ThreeDayForecastDisplay
-WeatherData::getData <- CurrentConditionDisplay  : call getData
-WeatherData::getData <- DayForecastDisplay : call getData
-WeatherData::getData <- ThreeDayForecastDisplay : call getData
-DayForecastDisplay --[hidden] CurrentConditionDisplay
-CurrentConditionDisplay --[hidden]d ThreeDayForecastDisplay
+Subject o-r Observer
+
+DataImp::GetData <- Display1::Update 
+DataImp::GetData <- Display2::Update 
+Subject::Notify -> Observer::Update
+
 @enduml
 ```
 
-The Pull Observer Pattern is an alternative observer design. During the *notify()* call, the *IData* information is pulled from the *Subject* by the *Observer* by calling the *Subject*'s getData() function. This design should be used when synchronization between *Observer* and *Subject* is required (e.g. high-precision clock) or when the data is so large that copying takes a while.
+The Pull Observer Pattern is an alternative observer design. During the *notify()* call, the *Data* information is pulled from the *Subject* by the *Observer* by calling the *Subject*'s getData() function. This design should be used when synchronization between *Observer* and *Subject* is required (e.g. high-precision clock) or when the data is so large that copying takes a while.
 
 ***Advantages:***
 

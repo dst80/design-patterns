@@ -22,20 +22,25 @@ Adapters can be created using inheritance or using composition. The nomenclature
 !theme plain
 skinparam nodesep 50
 skinparam ranksep 50
-object "**Client**" as client
-object "**Target**" as target {
+hide circle
+hide fields
+
+class "**Client**" as client
+hide client members
+
+class "**Target**" as target {
     Request()
 }
 
-object "**Adapter**" as adapter {
+class "**Adapter**" as adapter {
     Request ()
 }
 
-note right of adapter
-    Request -> SpecificRequest ()
+note right of adapter::Request
+    SpecificRequest ()
 end note
 
-object "**Adaptee**" as adaptee {
+class "**Adaptee**" as adaptee {
     SpecificRequest ()
 }
 
@@ -53,21 +58,26 @@ adaptee <|-- adapter : implementation
 !theme plain
 skinparam nodesep 50
 skinparam ranksep 50
+hide circle
+hide fields
 
-object "**Client**" as client
-object "**Target**" as target {
+
+class "**Client**" as client
+hide client members
+
+class "**Target**" as target {
     Request()
 }
 
-object "**Adapter**" as adapter {
+class "**Adapter**" as adapter {
     Request ()
 }
 
-note right of adapter
-    Request -> adaptee.SpecificRequest ()
+note right of adapter::Request
+    adaptee.SpecificRequest ()
 end note
 
-object "**Adaptee**" as adaptee {
+class "**Adaptee**" as adaptee {
     SpecificRequest ()
 }
 

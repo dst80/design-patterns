@@ -17,34 +17,41 @@ Used nomenclature for bridges are:
 ---
 
 ```plantuml
-@startuml adapter_by_inheritance
+@startuml bridge
 !theme plain
 skinparam nodesep 50
 skinparam ranksep 50
-object "**Client**" as client
+hide circle
+hide fields
+
+class "**Client**" as client
+hide client members
 together {
-  
-object "**Abstraction**" as abstraction {
-    Operation ()
+
+interface "**Abstraction**" as abstraction {
+    Operation()
 }
 
-object "**Refines Abstraction**" as refined_abstraction
+
+class "**Refines Abstraction**" as refined_abstraction
 }
+hide refined_abstraction members
+
 together {
-object "**Implementor**" as implementor {
-    OperationImpl ()
+interface "**Implementor**" as implementor {
+    OperationImpl()
 }
-object "**Concrete Implementor A**" as concrete_implementor_A {
-    OperationImpl ()
+class "**Concrete Implementor A**" as concrete_implementor_A {
+    OperationImpl()
 }
 
-object "**Concrete Implementor B**" as concrete_implementor_B {
-    OperationImpl ()
+class "**Concrete Implementor B**" as concrete_implementor_B {
+    OperationImpl()
 }
 implementor <|-- concrete_implementor_A
 implementor <|-- concrete_implementor_B
 }
-note left of abstraction
+note left of abstraction::Operation
     Operation -> OperationImpl ()
 end note
 

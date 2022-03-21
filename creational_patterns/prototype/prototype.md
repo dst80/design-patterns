@@ -8,37 +8,39 @@ Specify the kinds of objects to create using a prototypical instance, and create
 
 skinparam nodesep 50
 skinparam ranksep 40
+hide circle
+hide fields
 
-object "**Client**" as Client {
+class "**Client**" as client {
     Operation ()
 }
-note left of Client
+note left of client::Operation
  p = prototype->Clone ()
 end note
 
 together {
-    object "//**Prototype**//" as Prototype {
-        Clone ()
+    interface "**Prototype**" as prototype {
+        Clone()
     }
     together {
-        object "//**ConcretePrototype1**//" as ConcretePrototype1 {
-            Clone ()
+        class "**ConcretePrototype1**" as concrete_prototype_1 {
+            Clone()
         }
-        object "//**ConcretePrototype2**//" as ConcretePrototype2 {
-            Clone ()
+        class "**ConcretePrototype2**" as concrete_prototype_2 {
+            Clone()
         }
 
-        note bottom of ConcretePrototype1
-        return copy of self
+        note bottom of concrete_prototype_1
+            return copy of self
         end note
-        note bottom of ConcretePrototype2
-        return copy of self
+        note bottom of concrete_prototype_2
+            return copy of self
         end note
     }
-    Prototype <|-- ConcretePrototype1
-    Prototype <|-- ConcretePrototype2
+    prototype <|-- concrete_prototype_1
+    prototype <|-- concrete_prototype_2
 }
-Client -> Prototype : prototype
+client -> prototype : "prototype"
 
 @enduml
 ```

@@ -7,23 +7,27 @@ Four terms always associated with the *Command* Pattern are *Command*, *Receiver
 ```plantuml
 @startuml command_pattern
 !theme plain
-skinparam nodesep 20
+skinparam nodesep 70
 skinparam ranksep 50
+hide circle
+hide fields
 
-object ":Invoker" as Invoker
-object ":Receiver" as Receiver
+class "**:Invoker**" as invoker
+hide invoker members
+class "**:Receiver**" as receiver 
+hide receiver members
 
-object "ICommand" as ICommand {
-  Execute ()
+interface "**Command**" as command {
+  Execute()
 }
 
-object "SomeCommand" as SomeCommand {
-  Execute ()
+class "**ConcreteCommand**" as concrete_command {
+  Execute()
 }
 
-Invoker -> ICommand::Execute : calls
-ICommand <|-- SomeCommand
-SomeCommand::Execute -> Receiver : calls
+invoker -> command::Execute
+command <|-- concrete_command
+concrete_command::Execute -r-> receiver::Receiver
 @enduml
 ```
 

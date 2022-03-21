@@ -7,16 +7,17 @@ Ensure a class has only instance, and provide a global point of access to it.
 @startuml singleton
 !theme plain
 
+hide circle
 skinparam nodesep 50
 skinparam ranksep 40
 
-object "**Singleton**" as Client {
+class "**Singleton**" as singleton {
     static GetInstance()
     SomeOperation()
     ---
     static instance
 }
-note right of Client
+note right of singleton::GetInstance
 <lock>
 if (instance <not initialized>) 
     instance = <make new Instance>

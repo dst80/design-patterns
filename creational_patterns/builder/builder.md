@@ -7,19 +7,20 @@ The builder pattern separate the construction of a **complex** object from its r
 ```plantuml
 @startuml simple_builder
 !theme plain
-object "**Director**" as Director {
-    Construct ()
+hide fields
+class "**Director**" as Director {
+    Construct()
 }
 
-object "//**Builder**//" as Builder {
-    BuildPartA ()
-    BuildPartB ()
+interface "**Builder**" as Builder {
+    BuildPartA()
+    BuildPartB()
 }
 
-object "**ConcreteBuilder**" as ConcreteBuilder {
-    BuildPartA ()
-    BuildPartB ()
-    GetResult ()
+class "**ConcreteBuilder**" as ConcreteBuilder {
+    BuildPartA()
+    BuildPartB()
+    GetResult()
 }
 
 rectangle "**Product**" as Product {
@@ -51,7 +52,7 @@ skinparam nodesep 50
 skinparam ranksep 50
 package builder <<rectangle>> {
     together {
-        object "//**TextConverter**//" as TextConverter {
+        object "**TextConverter**" as TextConverter {
             ConvertKeyValuePair ()
             NextSection ()
             ...

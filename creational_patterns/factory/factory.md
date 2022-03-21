@@ -4,30 +4,38 @@ Define an interface for creating an object, but let subclasses decide which clas
 ```plantuml
 @startuml factory
 !theme plain
+hide circle
+hide fields
+hide members
 
-skinparam nodesep 35
-skinparam ranksep 10
+skinparam nodesep 25
+skinparam ranksep 50
 together {
 together {
-    object "**ProductConsumer**" as ProductConsumer
-    object "**Factory**" as Factory {
-        CreateProduct
+    class "**ProductConsumer**" as ProductConsumer
+
+    class "**Factory**" as Factory {
+        CreateProduct()
     }
-    ProductConsumer --> Factory : invoke
+    show Factory members
+    hide Factory fields
+
+    ProductConsumer -d-> Factory : " invoke"
   
+
     note right of ProductConsumer
     Product product = factory.CreateProduct ()
     end note
 
-    note right of Factory
+    note right of Factory::CreateProduct
     return new ConcreteProduct ()
     end note
 }
 
 together {
-    object "**Product**" as Product
-    object "**ConcreteProduct**" as ConcreteProduct
-    Product <|--down ConcreteProduct
+    interface "**Product**" as Product
+    class "**ConcreteProduct**" as ConcreteProduct
+    Product <|--d ConcreteProduct
 }
 }
 
