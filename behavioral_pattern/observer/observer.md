@@ -12,51 +12,52 @@ Depending on the used Observer pattern type, the updated information is either p
 
 ```plantuml
 @startuml push_observer
-!theme plain
-skinparam nodesep 50
 skinparam ranksep 50
+skinparam nodesep 50
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
 hide fields
 
-together {
-    abstract "**Subject**" as Subject {
-        Attach(Observer) 
-        Detach(Observer)
-        Notify()
-    }
-    class "**DataImp**" as DataImp {
-        Attach(Observer)
-        Detach(Observer)
-        Notify()
-    }
+abstract Subject {
+    Attach(Observer) 
+    Detach(Observer)
+    Notify()
 }
 
-together {
-    abstract "**Observer**" as Observer {
-        Update(IState)
-    }
-    abstract "**Display**" as Display {
-        Display()
-    }
-    class "**Display1**" as Display1 {
-        Update(IState)
-        Display()
-    }
-    class "**Display2**" as Display2 {
-        Update(IState)
-        Display()
-    }
-    Display <|-- Display1
-    Display <|-- Display2
-    Observer <|-- Display1
-    Observer <|-- Display2
+class DataImp extends Subject {
+  Attach(Observer)
+  Detach(Observer)
+  Notify()
+}
+
+abstract Observer {
+  Update(IState)
+}
+abstract Worker {
+  DoSomething()
+}
+class AWorkerImp extends Worker, Observer {
+  Update(IState)
+  DoSomething()
 }
 
 Subject o- Observer 
 Subject::Notify -> Observer::Update
-Subject <|-- DataImp
-Observer -[hidden] Display
-
 @enduml
 ```
 
@@ -79,66 +80,62 @@ The Push Observer Pattern is the typical observer design. During the "*notify ()
 
 ```plantuml
 @startuml pull_observer
-!theme plain
-skinparam nodesep 100
-skinparam ranksep 50
-hide fields
+skinparam ranksep 100
+skinparam nodesep 50
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
+hide fields
 
 together {
-    interface "**Data**" as Data {
-        GetData()
-    }
-
-    interface "**Subject**" as Subject {
-        Attach(Observer) 
-        Detach(Observer)
-        Notify()
-    }
-    class "**Data Imp**" as DataImp {
-        Attach(Observer)
-        Detach(Observer)
-        Notify()
-        GetData ()
-    }
-    Data <|-- DataImp
-    Subject <|-- DataImp
+  interface Data {
+      GetData()
+  }
+  interface Subject {
+    Attach(Observer) 
+    Detach(Observer)
+    Notify()
+  }
+  class DataImp extends Subject, Data {
+    Attach(Observer)
+    Detach(Observer)
+    Notify()
+    GetData ()
+  }
 }
 
-together {
-    together {
-    interface "**Observer**" as Observer {
-        Set(Data)
-        Update()
-    }
-    Interface "**Display**" as Display {
-        Paint()
-    }
-    }
-    together {
-        class "**Display Imp. 1**" as Display1 {
-            Set(Data)
-            Update()
-            Paint()
-        }
-        class "**Display Imp. 2**" as Display2 {
-            Set(Data)
-            Update()
-            Paint()
-        }
-    }
-    Observer <|-- Display1
-    Observer <|--- Display2
-    Display <|-- Display1
-    Display <|-- Display2
-
+interface Observer {
+  Set(Data)
+  Update()
+}
+Interface Worker {
+  DoSomething()
 }
 
-Subject o-r Observer
+class AWorkerImp extends Worker, Observer {
+  Set(Data)
+  Update()
+  DoSomething()
+}
 
-DataImp::GetData <- Display1::Update 
-DataImp::GetData <- Display2::Update 
+Subject o- Observer
+
 Subject::Notify -> Observer::Update
+AWorkerImp::Update -> DataImp::GetData 
 
 @enduml
 ```

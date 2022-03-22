@@ -5,19 +5,34 @@ Ensure a class has only instance, and provide a global point of access to it.
 
 ```plantuml
 @startuml singleton
-!theme plain
-
-hide circle
+skinparam ranksep 50
 skinparam nodesep 50
-skinparam ranksep 40
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
+hide circle
+hide fields
 
-class "**Singleton**" as singleton {
+class Singleton {
     static GetInstance()
     SomeOperation()
     ---
     static instance
 }
-note right of singleton::GetInstance
+note right of Singleton::GetInstance
 <lock>
 if (instance <not initialized>) 
     instance = <make new Instance>

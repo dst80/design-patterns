@@ -4,11 +4,27 @@ It enforcing singular behavior, without imposing constraints on structure.
 
 ```plantuml
 @startuml monostate
-!theme plain
-
+skinparam ranksep 50
 skinparam nodesep 50
-skinparam ranksep 40
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
+hide fields
+
 class "**Monostate**" as mmnostate {
     Get()
     Set(...)

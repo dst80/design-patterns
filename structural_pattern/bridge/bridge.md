@@ -1,11 +1,11 @@
 ## Bridge
 
-Bridges decouple the abstraction from its implementation so that the two can vary independently.
+Bridges decouple the Abstraction from its implementation so that the two can vary independently.
 
 Used nomenclature for bridges are:
 
 * **Abstraction**
-  * defines the abstraction interface
+  * defines the Abstraction interface
   * maintaines a reference to an object of type *Implementation*
 * **Refined Abstraction**
   * extends the interface defined by the *Abstraction*
@@ -18,46 +18,56 @@ Used nomenclature for bridges are:
 
 ```plantuml
 @startuml bridge
-!theme plain
-skinparam nodesep 50
 skinparam ranksep 50
+skinparam nodesep 50
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
 hide fields
 
-class "**Client**" as client
-hide client members
+
+class Client
+hide Client members
 together {
-
-interface "**Abstraction**" as abstraction {
-    Operation()
+  interface Abstraction {
+      Operation()
+  }
+  class RefinedAbstraction extends Abstraction
 }
-
-
-class "**Refines Abstraction**" as refined_abstraction
-}
-hide refined_abstraction members
+hide RefinedAbstraction members
 
 together {
-interface "**Implementor**" as implementor {
-    OperationImpl()
-}
-class "**Concrete Implementor A**" as concrete_implementor_A {
-    OperationImpl()
-}
+  interface Implementor {
+      OperationImpl()
+  }
+  class ConcreteImplementorA extends Implementor {
+      OperationImpl()
+  }
 
-class "**Concrete Implementor B**" as concrete_implementor_B {
-    OperationImpl()
+  class ConcreteImplementorB extends Implementor {
+      OperationImpl()
+  }
 }
-implementor <|-- concrete_implementor_A
-implementor <|-- concrete_implementor_B
-}
-note left of abstraction::Operation
+note left of Abstraction::Operation
     Operation -> OperationImpl ()
 end note
 
-client --> abstraction
-abstraction <|-- refined_abstraction
-abstraction *-> implementor : impl
+Client --> Abstraction
+Abstraction *-> Implementor : impl
 
 @enduml
 ```
@@ -68,8 +78,8 @@ abstraction *-> implementor : impl
 
 Bridges can be used when
 
-* a permanent binding between an abstraction and its implementation should be avoided. For example, to switch or replace the implementation during runtime.
+* a permanent binding between an Abstraction and its implementation should be avoided. For example, to switch or replace the implementation during runtime.
 * both the abstractions and their implementations are to be subclassable. The bridge pattern allows different abstractions and implementations to be combined and expanded independently of one another.
-* changes in the implementation of an abstraction should habe no impact to the client
-* the implementation on an actraction should be completely hidden for the client (e.g. c++)
+* changes in the implementation of an Abstraction should habe no impact to the Client
+* the implementation on an actraction should be completely hidden for the Client (e.g. c++)
  

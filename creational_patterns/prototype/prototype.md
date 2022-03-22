@@ -1,46 +1,59 @@
 ## Prototype
 
-Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this prototype
+Specify the kinds of objects to create using a prototypical instance, and create new objects by copying this Prototype
 
 ```plantuml
-@startuml prototype
-!theme plain
-
+@startuml Prototype
+skinparam ranksep 50
 skinparam nodesep 50
-skinparam ranksep 40
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
 hide fields
 
-class "**Client**" as client {
+
+class Client {
     Operation ()
 }
-note left of client::Operation
- p = prototype->Clone ()
+note left of Client::Operation
+p = Prototype->Clone ()
 end note
 
 together {
-    interface "**Prototype**" as prototype {
+    interface Prototype {
         Clone()
     }
     together {
-        class "**ConcretePrototype1**" as concrete_prototype_1 {
+        class ConcretePrototype1 extends Prototype {
             Clone()
         }
-        class "**ConcretePrototype2**" as concrete_prototype_2 {
+        class ConcretePrototype2 extends Prototype {
             Clone()
         }
 
-        note bottom of concrete_prototype_1
-            return copy of self
+        note bottom of ConcretePrototype1
+        return copy of self
         end note
-        note bottom of concrete_prototype_2
-            return copy of self
+        note bottom of ConcretePrototype2
+        return copy of self
         end note
     }
-    prototype <|-- concrete_prototype_1
-    prototype <|-- concrete_prototype_2
 }
-client -> prototype : "prototype"
+Client -> Prototype : "Prototype"
 
 @enduml
 ```

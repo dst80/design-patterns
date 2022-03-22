@@ -6,28 +6,43 @@ Four terms always associated with the *Command* Pattern are *Command*, *Receiver
 
 ```plantuml
 @startuml command_pattern
-!theme plain
-skinparam nodesep 70
 skinparam ranksep 50
+skinparam nodesep 50
+skinparam class {
+  FontSize 13
+  AttributeFontSize 13
+  FontStyle bold
+  BackgroundColor transparent
+  BorderColor black
+}
+skinparam arrow {
+  Color black
+  FontColor black
+  Thickness 2
+}
+skinparam note {
+  BackgroundColor transparent
+  BorderColor black
+}
 hide circle
 hide fields
 
-class "**:Invoker**" as invoker
-hide invoker members
-class "**:Receiver**" as receiver 
-hide receiver members
+class Invoker
+hide Invoker members
 
-interface "**Command**" as command {
+interface Command {
+  Execute()
+}
+Invoker -> Command::Execute
+
+class ConcreteCommand extends Command {
   Execute()
 }
 
-class "**ConcreteCommand**" as concrete_command {
-  Execute()
-}
+class Receiver 
+hide Receiver members
 
-invoker -> command::Execute
-command <|-- concrete_command
-concrete_command::Execute -r-> receiver::Receiver
+ConcreteCommand::Execute -> Receiver
 @enduml
 ```
 
@@ -37,7 +52,7 @@ Its benefits are
 * make the *Reveiver* configurable for the *Invoker*
 * encapsulate all information for the operation
 
-Due to this structure the commands can be stored, executed at any time and can also be undone, if the previous information is stored in the command. It's also useable to create and execute operations to data classes without changing the interface of the data class.
+Due to this structure the commands can be stored, executed at any time and can also be undone, if the previous information is stored in the Command. It's also useable to create and execute operations to data classes without changing the interface of the data class.
 
 It is used for
 
