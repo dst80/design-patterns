@@ -70,7 +70,8 @@ Used nomenclature for decorator are:
 * **ConcreteComponent**
   * defines an object where additional functionality/responsiblity can be attached
 * **Decorator**
-  * maintains a reference to a *Component* object and has the *Component* interface, so that it can be used as Component  
+  * maintains a ref
+erence to a *Component* object and has the *Component* interface, so that it can be used as Component  
 * **ConcreateDecorator**
   * adds functionality/resonsibility to the *Component*
 
