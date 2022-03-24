@@ -6,7 +6,6 @@ The Facade defines a higher-level interface that makes the subsystem easier zu u
 
 ```plantuml
 @startuml Facade
-left to right direction
 skinparam nodesep 50
 skinparam ranksep 50
 skinparam class {
@@ -33,7 +32,7 @@ hide circle
 hide fields
 hide members
 
-class "    Facade     " as Facade 
+class "  Facade  " as Facade 
 
 client1 --> Facade
 client2 --> Facade
@@ -56,8 +55,8 @@ package "subsystem classes" as subsystem {
         b1 -- c2
     }
 }
-Facade --> a2
-Facade --> b2
+Facade -> a2
+Facade -> b2
 Facade --> c1
 Facade --> c2
 @enduml
