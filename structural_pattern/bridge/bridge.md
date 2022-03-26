@@ -2,18 +2,6 @@
 
 Bridges decouple the Abstraction from its implementation so that the two can vary independently.
 
-Used nomenclature for bridges are:
-
-* **Abstraction**
-  * defines the Abstraction interface
-  * maintaines a reference to an object of type *Implementation*
-* **Refined Abstraction**
-  * extends the interface defined by the *Abstraction*
-* **Implementor**
-  * defines the interface for implementation classes. This interface doesn't have to correspond exactly *Abstraction* interface. Typically the *Implementator* interface provides only primitive operations, and Abstraction defines higher-level operations based on these primitives
-* **ConcreateImplementor**
-  * implementation the *Implementor* interface and defines its concrete implementation.
-
 ---
 
 ```plantuml
@@ -72,7 +60,18 @@ Abstraction *-> Implementor : impl
 @enduml
 ```
 
----
+Used nomenclature for bridges are:
+
+* **Abstraction**
+  * defines the Abstraction interface
+  * maintaines a reference to an object of type *Implementation*
+* **Refined Abstraction**
+  * extends the interface defined by the *Abstraction*
+* **Implementor**
+  * defines the interface for implementation classes. This interface doesn't have to correspond exactly *Abstraction* interface. Typically the *Implementator* interface provides only primitive operations, and Abstraction defines higher-level operations based on these primitives
+* **ConcreateImplementor**
+  * implementation the *Implementor* interface and defines its concrete implementation.
+
 
 ### Usage
 
@@ -82,4 +81,14 @@ Bridges can be used when
 * both the abstractions and their implementations are to be subclassable. The bridge pattern allows different abstractions and implementations to be combined and expanded independently of one another.
 * changes in the implementation of an Abstraction should habe no impact to the Client
 * the implementation on an actraction should be completely hidden for the Client (e.g. c++)
- 
+
+#### Advantages
+
+* Decoupling interface and implementation, so that implementation is no longer bound to the interface itself.
+* interface and implementation can very independently.
+* improved extensibility
+* hiding the implementation details from the client.
+
+#### Disadvantages
+
+* additional layer of abstraction can make it difficult for developers to follow the chain of execution.
