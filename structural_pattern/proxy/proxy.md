@@ -5,7 +5,7 @@ Provide a surragate or placeholder for another object to control access to it
 ---
 
 ```plantuml
-@startuml Facade
+@startuml Proxy
 skinparam nodesep 50
 skinparam ranksep 50
 skinparam class {
@@ -81,12 +81,11 @@ Used nomenclature for Proxy is:
 
 ### Usage
 
-* *smart pointer* 
+* *smart pointer*
   * contain additional information towards raw pointers an is responsible for creation, destruction, reference counting, access validation, etc..
 * *remote proxy*
   * provides a local representation for an object on a different address or on another machine
 * *virtual proxy*
   * creates expensive object on demand.
-* *protection proxy* 
+* *protection proxy*
   * can be used to handle access rights to specific objects.
-
