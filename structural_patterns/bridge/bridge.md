@@ -67,7 +67,7 @@ Used nomenclature for bridges are:
   * extends the interface defined by the *Abstraction*
 * **Implementor**
   * defines the interface for implementation classes. This interface doesn't have to correspond exactly *Abstraction* interface. Typically the *Implementator* interface provides only primitive operations, and Abstraction defines higher-level operations based on these primitives
-* **ConcreateImplementor**
+* **ConcreteImplementor**
   * implementation the *Implementor* interface and defines its concrete implementation.
 
 ### Usage

@@ -35,9 +35,9 @@ together {
     }
 
     note left of ConcreteMediator::OnChanged
-        concreateColleague1.GetSomething()
+        concreteColleague1.GetSomething()
         ...
-        concreateColleague2.SetSomething()
+        concreteColleague2.SetSomething()
     end note
 }
 
@@ -46,19 +46,19 @@ together {
         Changed()
     }
 
-    class ConcreateColleague1 extends Colleague {
+    class ConcreteColleague1 extends Colleague {
         GetSomething()
         Changed()
     }
-    class ConcreateColleague2 extends Colleague {
+    class ConcreteColleague2 extends Colleague {
         SetSomething()
         Changed()
     }
 }
 
 Mediator::OnChanged <- Colleague::Changed 
-ConcreteMediator::OnChanged -> ConcreateColleague1::GetSomething
-ConcreteMediator::OnChanged -> ConcreateColleague2::SetSomething
+ConcreteMediator::OnChanged -> ConcreteColleague1::GetSomething
+ConcreteMediator::OnChanged -> ConcreteColleague2::SetSomething
 @enduml
 ```
 
