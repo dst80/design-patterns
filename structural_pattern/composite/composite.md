@@ -2,21 +2,6 @@
 
 Assembles objects into tree structures to represent part-whole hierarchies. Composite allows clients to treat individual objects and compositions of objects consistently.
 
-* **Component**
-  * declares the interface for objects in the compostion
-  * implements default behavior for the interface common to all classes as appropriate
-  * declares an interface for accessing and managing its child components.
-  * (optional) defines an interface for accessing a Component's parent in recursive structure, and implements it if that's appropiate.
-* **Leaf**
-  * represents Leaf objects in the composition. A Leaf has no problems
-  * defines behavior for primitive objects in the composition
-* **Composite**
-  * defines behavior for components having children
-  * stores child components
-  * implements child-related operations in the Component interface.
-* **Client**
-  * manipulates objects in the composition through the Component interface.
-
 ```plantuml
 @startuml Composite
 skinparam ranksep 50
@@ -70,6 +55,23 @@ Client -r--> Component
 Component <--o Composite : children
 @enduml
 ```
+
+* **Component**
+  * declares the interface for objects in the compostion
+  * implements default behavior for the interface common to all classes as appropriate
+  * declares an interface for accessing and managing its child components.
+  * (optional) defines an interface for accessing a Component's parent in recursive structure, and implements it if that's appropiate.
+* **Leaf**
+  * represents Leaf objects in the composition. A Leaf has no problems
+  * defines behavior for primitive objects in the composition
+* **Composite**
+  * defines behavior for components having children
+  * stores child components
+  * implements child-related operations in the Component interface.
+* **Client**
+  * manipulates objects in the composition through the Component interface.
+
+
 
 ### Usage
 

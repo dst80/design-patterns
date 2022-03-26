@@ -2,8 +2,6 @@
 
 The Facade defines a higher-level interface that makes the subsystem easier zu use.
 
----
-
 ```plantuml
 @startuml Facade
 skinparam nodesep 50

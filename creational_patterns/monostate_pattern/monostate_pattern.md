@@ -37,7 +37,8 @@ class "**Monostate**" as mmnostate {
 
 ### Usage
 
-***Advantages***
+
+#### Advantages
 
 * users do not need to know that the object they use, is a Monostate.
 * derivatives of a Monostate continue to share static variables.
@@ -45,7 +46,7 @@ class "**Monostate**" as mmnostate {
 * being static, the variables of a Monostate have specific creation and destruction times.
 * more testable then a singleton, because its polymorphic state allows to override its behavior for mocks, stubs or fakes.
 
-***Disadvantages***
+#### Disadvantages
 
 * you cannot derive a Monostate from a non-Monostate.
 * a Monostate might go through many creations and destructions, which might be quite expensive, depending on implementation.

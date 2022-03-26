@@ -1,7 +1,6 @@
 ## Decorator
 The decorator pattern offers the possibility to dynamically attach additional functionalities and responsibilities to an object. The function of the original object is not extended by subclassing, but by passing the object as a component to the decorator, which contains the additional functionality.
 
----
 
 ```plantuml
 @startuml decorator
@@ -75,7 +74,6 @@ erence to a *Component* object and has the *Component* interface, so that it can
 * **ConcreateDecorator**
   * adds functionality/resonsibility to the *Component*
 
----
 
 ### Usage
 

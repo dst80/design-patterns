@@ -1,4 +1,5 @@
 ## Chain of Responsibility
+
 Avoid coupling the sender of an request to its receiver by giving more than one objects the change to handle the request. So chaining the receiving objects passes to request along the chain until an object handles the request without forwarding the request to the next object in the chain.
 
 ```plantuml

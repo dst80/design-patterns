@@ -2,8 +2,6 @@
 
 Provide a surragate or placeholder for another object to control access to it
 
----
-
 ```plantuml
 @startuml Proxy
 skinparam nodesep 50

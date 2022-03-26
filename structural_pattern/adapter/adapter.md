@@ -4,7 +4,6 @@ Converts a class's interface into another interface client expects. Adapter clas
 
 Adapters can be created using inheritance or using composition.
 
----
 
 ```plantuml
 @startuml adapter_by_inheritance

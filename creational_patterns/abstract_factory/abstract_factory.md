@@ -82,12 +82,12 @@ The abstract factory is used when
 * a group of products is designed to be used together, and not needed to enforced this constraints
 * the interfaces of products are to be provided in a class library without their implementation.
 
-***Advantages:***
+#### Advantages
 
 * the client is isolated from concrete classes
 * the exchange of product families is possible in a simple manner
 
-***Disadvantage:***
+#### Disadvantage
 
 * using concrete functions it is difficult to add new product types as changes have to be made in all concrete factories.
 

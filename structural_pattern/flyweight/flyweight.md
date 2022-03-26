@@ -2,8 +2,6 @@
 
 Flyweight are used to support large numbers of fine-grained objects efficiently.
 
----
-
 ```plantuml
 @startuml Facade
 skinparam nodesep 50
