@@ -1,5 +1,5 @@
 @import "./creational_patterns/creational_patterns.md"
 ----
-@import "./structural_pattern/structural_pattern.md"
+@import "./structural_patterns/structural_patterns.md"
 ----
-@import "./behavioral_pattern/behavioral_pattern.md"
+@import "./behavioral_patterns/behavioral_patterns.md"
