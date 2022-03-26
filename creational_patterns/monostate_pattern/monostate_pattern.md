@@ -55,6 +55,4 @@ class "**Monostate**" as mmnostate {
 
 > *SINGLETON is best used when you have an existing class that you want to constrain through derivation and don’t mind that everyone will have to call the Instance() method to gain access. MONOSTATE is best used when you want the singular nature of the class to be transparent to the users or when you want to use polymorphic derivatives of the single object*
 
----
-
 > **AVOID SINGLETONS AND MONOSTATES. A single instance can also be used by creating just one instance and then passing it to consumer classes via dependency injection.**

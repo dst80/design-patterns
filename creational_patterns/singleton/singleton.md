@@ -52,6 +52,4 @@ Use the Singleton pattern when
 
 > *Because of the single instance Singletons will be a bottleneck in multithread applictions. Also using Singletons in code reduces the testability of code. Hence try to avoid using singletons.*
 
----
-
 > **AVOID SINGLETONS AND MONOSTATES. A single instance can also be used by creating just one instance and then passing it to consumer classes via dependency injection.**

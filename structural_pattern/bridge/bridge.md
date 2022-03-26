@@ -2,7 +2,6 @@
 
 Bridges decouple the Abstraction from its implementation so that the two can vary independently.
 
----
 
 ```plantuml
 @startuml bridge
