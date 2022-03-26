@@ -1,4 +1,4 @@
-## Bridge
+## Bridge Pattern
 
 Bridges decouple the Abstraction from its implementation so that the two can vary independently.
 
@@ -26,7 +26,6 @@ skinparam note {
 }
 hide circle
 hide fields
-
 
 class Client
 hide Client members
@@ -71,7 +70,6 @@ Used nomenclature for bridges are:
   * defines the interface for implementation classes. This interface doesn't have to correspond exactly *Abstraction* interface. Typically the *Implementator* interface provides only primitive operations, and Abstraction defines higher-level operations based on these primitives
 * **ConcreateImplementor**
   * implementation the *Implementor* interface and defines its concrete implementation.
-
 
 ### Usage
 

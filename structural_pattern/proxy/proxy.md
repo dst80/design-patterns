@@ -1,4 +1,4 @@
-## Proxy
+## Proxy Pattern
 
 Provide a surragate or placeholder for another object to control access to it
 
@@ -29,24 +29,18 @@ skinparam package {
 hide circle
 hide fields
 
-class Client {
-
-}
+class Client {}
 hide Client members
 
 interface Subject {
     Request()
 }
-
 class RealSubject extends Subject {
     Request()
 }
-
 class OtherRealSubject extends Subject {
     Request()
 }
-
-
 class Proxy extends Subject {
     Request()
 }
@@ -58,7 +52,6 @@ end note
 Client -> Subject
 Proxy -l-> RealSubject : realSubject 
 Proxy -r-> OtherRealSubject : realSubject 
-
 @enduml
 ```
 

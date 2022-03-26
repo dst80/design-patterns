@@ -1,8 +1,8 @@
-## Template (Method) pattern
+## Template (Method) Pattern
 
 Define the skeleton of an algorithm/functionality.
 The Template Method pattern deferring some steps to the algorithm/functionality to subclasses.
-The Template Class uses a template object with can be replaced. For better operation the template object can have some requirements like an interface which can be implemented by subclasses. 
+The Template Class uses a template object with can be replaced. For better operation the template object can have some requirements like an interface which can be implemented by subclasses.
 
 ```plantuml
 @startuml template_method

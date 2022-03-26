@@ -1,4 +1,4 @@
-## Builder pattern
+## Builder Pattern
 
 The builder pattern separate the construction of a **complex** class from its represenation, so that the same construction process can create different representations. It's used together with the **component pattern** and/or the **strategie pattern** to create complex classs.
 
@@ -49,7 +49,6 @@ ConcreteBuilder::GetResult -right.> Product
 @enduml
 ```
 
-
 > *In contrast to the (Abstract) Factory pattern the builder pattern builds the class step by step and returns it at a final step. Abstract Factories provide a family of products und return it immediately.*
 
 ### Usage
@@ -61,8 +60,7 @@ The builder pattern should be used when
 
 ### Example
 
-basic example to build different TextFormat-Files with the builder 
-pattern
+basic example to build different TextFormat-Files with the builder pattern
 
 ```plantuml
 @startuml builder_exmple

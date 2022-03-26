@@ -1,4 +1,4 @@
-## Iterator pattern
+## Iterator Pattern
 
 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representaion
 
@@ -63,7 +63,7 @@ ConcreteAggregate <. ConcreteIterator
 Used nomenclature for Iterator Pattern is:
 
 * **Interator**
-  * defines the interface for accessing and transversing elements. 
+  * defines the interface for accessing and transversing elements.
 * **ConcreteIterator**
   * implements the interfaceof the Iterator
   * keep track of the current position in the aggregate.

@@ -1,4 +1,4 @@
-## Mediator
+## Mediator Pattern
 
 Define an object that encapsulate how a set of objects interact. Mediator promotes loose coupling by keeping objects from referring to each other explicitly, and it lets you vary therir interaction independently.
 
@@ -25,11 +25,9 @@ skinparam note {
 hide circle
 hide fields
 
-
 together {
     interface Mediator {
         OnChanged(Colleague)
-
     }
 
     class ConcreteMediator extends Mediator {
@@ -37,9 +35,9 @@ together {
     }
 
     note left of ConcreteMediator::OnChanged
-    concreateColleague1.GetSomething()
-    ...
-    concreateColleague2.SetSomething()
+        concreateColleague1.GetSomething()
+        ...
+        concreateColleague2.SetSomething()
     end note
 }
 

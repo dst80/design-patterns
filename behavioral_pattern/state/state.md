@@ -1,9 +1,9 @@
-## State
+## State Pattern
 
 Allow an object to alter its behavior when its internal state changes. An Object will appear to change its class.
 
 ```plantuml
-@startuml pull_observer
+@startuml state
 skinparam ranksep 100
 skinparam nodesep 50
 skinparam class {
@@ -32,22 +32,18 @@ class Context {
     Request()
     state
 }
-
 show Context fields
 
 together {
     class State {
         Handle()
     }
-
     class ConcreteStateA extends State {
         Handle()
     }
-
     class ConcreteStateB extends State {
         Handle()
     }
-
     class ConcreteStateC extends State {
         Handle()
     }

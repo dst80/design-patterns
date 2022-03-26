@@ -1,4 +1,4 @@
-## Strategy pattern
+## Strategy Pattern
 
 Defines a family of algorithm/functionality and make them interchangeable on run-time.
 
@@ -38,15 +38,12 @@ together {
     interface Strategy {
         AlgorithmInterface()
     }
-
     class ConcreteStrategyA extends Strategy {
         AlgorithmInterface()
     }
-
     class ConcreteStrategyB extends Strategy {
         AlgorithmInterface()
     }
-
     class ConcreteStrategyC extends Strategy {
         AlgorithmInterface()
     }

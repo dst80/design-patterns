@@ -1,4 +1,4 @@
-## Monostate pattern
+## Monostate Pattern
 The Monostate pattern is a variation of the singleton pattern.
 It enforcing singular behavior, without imposing constraints on structure.  
 
@@ -36,7 +36,6 @@ class "**Monostate**" as mmnostate {
 ```
 
 ### Usage
-
 
 #### Advantages
 

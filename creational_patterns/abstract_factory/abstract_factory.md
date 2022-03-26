@@ -1,4 +1,4 @@
-## Abstract Factory
+## Abstract Factory Pattern
 
 An abstract factory combines the responsibilities of "summarizing object generation in one place", "Separate the responsibility of creation and usage of an object" and "possibility for abstract constructors".
 

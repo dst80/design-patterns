@@ -1,5 +1,5 @@
 
-## Singleton 
+## Singleton Pattern
 
 Ensure a class has only instance, and provide a global point of access to it.
 

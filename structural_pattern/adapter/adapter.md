@@ -1,9 +1,8 @@
-## Adapter
+## Adapter Pattern
 
 Converts a class's interface into another interface client expects. Adapter classes therefore allow classes that otherwise cannot work together because they have incompatible interfaces.
 
 Adapters can be created using inheritance or using composition.
-
 
 ```plantuml
 @startuml adapter_by_inheritance

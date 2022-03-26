@@ -1,4 +1,4 @@
-## Composite pattern
+## Composite Pattern
 
 Assembles objects into tree structures to represent part-whole hierarchies. Composite allows clients to treat individual objects and compositions of objects consistently.
 
@@ -70,8 +70,6 @@ Component <--o Composite : children
   * implements child-related operations in the Component interface.
 * **Client**
   * manipulates objects in the composition through the Component interface.
-
-
 
 ### Usage
 

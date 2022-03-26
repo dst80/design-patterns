@@ -26,28 +26,26 @@ hide circle
 hide fields
 
 together {
-class Client {
-} 
+    class Client {} 
+    class Invoker {}
 
-class Invoker {
+    class Receiver {
+      Action()
+    } 
 
-}
-class Receiver {
-  Action()
-} 
-Client -r[hidden] Invoker
-Client -d-> Receiver
+    Client -r[hidden] Invoker
+    Client -d-> Receiver
 }
 
 together {
-interface Command {
-  Execute()
-}
+    interface Command {
+      Execute()
+    }
 
-class ConcreteCommand extends Command {
-  Execute()
-  someState 
-}
+    class ConcreteCommand extends Command {
+      Execute()
+      someState 
+    }
 }
 
 note right of ConcreteCommand::Execute
@@ -58,7 +56,6 @@ Command <-o Invoker
 Receiver::Action <- ConcreteCommand::Execute  
 Client --> ConcreteCommand
 @enduml
-
 ```
 
 Used nomenclature for Command Pattern is:
@@ -71,7 +68,7 @@ Used nomenclature for Command Pattern is:
 * **Command**
   * defines the interface for executing an operation
 
-* **ConcreteCommand** 
+* **ConcreteCommand**
   * defines a binding between a receiver object and an action.
   * implements Execute by invoking the corresponding operation(s) on the Receiver
 

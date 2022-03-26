@@ -75,4 +75,3 @@ Use Factory Method pattern when
 
 * more code to write
 * Creation process is slower
-

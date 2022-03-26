@@ -1,4 +1,4 @@
-## Memento
+## Memento Pattern
 
 Without violating encapsulation, capture and externalize the internal state of objects, so that the object be restored to this state later.
 
@@ -82,7 +82,7 @@ Use the Memento pattern when
 #### Advantages
 
 * It simplifies the Originator to store its state
-* Can keep track of the state of the Originator and reset the states 
+* Can keep track of the state of the Originator and reset the states
 
 #### Disadvantages
 

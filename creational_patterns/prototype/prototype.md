@@ -66,4 +66,3 @@ Use Prototype pattern when a system should be independent of how products are cr
 * when building the classes of factories parallels the class hierachy of products
 * when instances of a class can have one of few combination states. Therefore using prototypes can reduce the overhead of instanciating the classes manually.
 * when coping of a class depends on it's state.
-

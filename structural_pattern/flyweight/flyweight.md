@@ -1,4 +1,4 @@
-## Flyweight
+## Flyweight Pattern
 
 Flyweight are used to support large numbers of fine-grained objects efficiently.
 

@@ -1,4 +1,4 @@
-## Facade
+## Facade Pattern
 
 The Facade defines a higher-level interface that makes the subsystem easier zu use.
 

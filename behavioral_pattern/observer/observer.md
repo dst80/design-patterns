@@ -71,7 +71,7 @@ Use this design when
 * *IState* has a structure independent of *Object* and *Subject*
 * *IState* can be different types, hence different State can the notified.
 
-#### Disadvantage
+#### Disadvantages
 
 * In heavy load processes during the notify call IState can be out of sync.
 

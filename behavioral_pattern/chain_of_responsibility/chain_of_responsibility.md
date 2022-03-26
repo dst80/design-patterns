@@ -25,13 +25,9 @@ skinparam note {
 skinparam package {
     Style rectangle
 }
-
 hide circle
 
-
-class Client {
-
-}
+class Client {}
 hide Client members
 
 interface Handler {
@@ -48,7 +44,6 @@ class ConcreteHandler2 extends Handler {
     HandleRequest(Request)
     Handler successor
 }
-
 
 class ConcreteHandler3 extends Handler {
     HandleRequest(Request)
@@ -70,7 +65,6 @@ if (successor)
     sucessor->HandleRequest (request)
 end note
 
-
 note bottom of ConcreteHandler2
 if (request == other_request)
 {
@@ -79,7 +73,6 @@ if (request == other_request)
 if (successor)
     sucessor->HandleRequest (request)
 end note
-
 
 note bottom of ConcreteHandler3
 if (request == other_request)
