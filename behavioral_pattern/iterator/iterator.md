@@ -3,11 +3,7 @@
 Provide a way to access the elements of an aggregate object sequentially without exposing its underlying representaion
 
 ```plantuml
-<<<<<<< HEAD
 @startuml interator
-=======
-@startuml push_observer
->>>>>>> b91bfaca5327e2e1285dd4cc41009b973c30c0c5
 skinparam ranksep 50
 skinparam nodesep 50
 skinparam class {
