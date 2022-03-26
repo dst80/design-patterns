@@ -1,14 +1,10 @@
 ## Observer Pattern
 
-The observer pattern is the key pattern, then an object needs to be informed that another object has changed. Event handling is one of the core uses of Observer Pattern. This pattern exists in functional programming as well as in object-oriented programming. For the sake of simplicity, the observer pattern is shown in its object-oriented form as an example.
+Define a one-to-many dependency between objects so that when one object change state, all its dependents are noified and updated automatically.
 
-Basically, there is always an *Observer* and the object that the *Observer* wants to observe (*Subject*, *Observable*).
-In order for the *Observer* to be informed that the *Subject* has changed, it must register to the *Subject*.
-When the *Subject*'s *notify ()* function is called, the *update ()* function is called for all registered *Observers*.
+There are to types of observers ***Push Observer*** and ***Pull Observer.***
 
-Depending on the used Observer pattern type, the updated information is either pushed to the *Observer* as parameter or pulled from the *Subject* by the *Observer* using a function call of the *Subject*.
-
-### **Push Observer**
+### Usage Push Observer
 
 ```plantuml
 @startuml push_observer
@@ -39,7 +35,7 @@ abstract Subject {
     Notify()
 }
 
-class DataImp extends Subject {
+class ConcreteSubject extends Subject {
   Attach(Observer)
   Detach(Observer)
   Notify()
@@ -51,7 +47,8 @@ abstract Observer {
 abstract Worker {
   DoSomething()
 }
-class AWorkerImp extends Worker, Observer {
+
+class ConcreteWorkerObserver extends Worker, Observer {
   Update(IState)
   DoSomething()
 }
@@ -61,22 +58,24 @@ Subject::Notify -> Observer::Update
 @enduml
 ```
 
-The Push Observer Pattern is the typical observer design. During the "*notify ()*" call, the information "*State*" is pushed from the "*Subject*" to the "*Observer*".
+Use this design when
 
-***Advantages:***
+* If full decoupling between Observer and ConcreteSubject is required.
+* IState is not syncronization depended
+* IState is small and the interation with this state is not time sonsuming
 
-- Simple implementation
-- *Observer* doesn't know anything about the *Subject*
-- *IState* has a structure independent of *Object* and *Subject*
-- *IState* can be different types, hence different State can the notified.
+#### Advantages
 
-***Disadvantages:***
+* Simple implementation
+* *Observer* doesn't know anything about the *Subject*
+* *IState* has a structure independent of *Object* and *Subject*
+* *IState* can be different types, hence different State can the notified.
 
-- In heavy load processes during the notify call IState can be out of sync.
+#### Disadvantage
 
-***
+* In heavy load processes during the notify call IState can be out of sync.
 
-### **Pull Observer**
+### Usage Pull Observer
 
 ```plantuml
 @startuml pull_observer
@@ -102,51 +101,66 @@ hide circle
 hide fields
 
 together {
-  interface Data {
-      GetData()
-  }
-  interface Subject {
-    Attach(Observer) 
-    Detach(Observer)
-    Notify()
-  }
-  class DataImp extends Subject, Data {
-    Attach(Observer)
-    Detach(Observer)
-    Notify()
-    GetData ()
-  }
+    interface Data {
+        GetData()
+    }
+    interface Subject {
+        Attach(Observer) 
+        Detach(Observer)
+        Notify()
+    }
+    
+    note right of Subject::Notify
+        for all observer in observers {
+           oberver-> Update()  
+        }
+    end note
+
+    class ConcreteDataSubject extends Subject, Data {
+        Attach(Observer)
+        Detach(Observer)
+        Notify()
+        GetData ()
+      }
 }
 
-interface Observer {
-  Set(Data)
-  Update()
+together {
+    interface Observer {
+        Set(Data)
+        Update()
+    }
+  
+    interface Worker {
+        DoSomething()
+    }
+
+    class ConcreteWorkerObserver extends Observer, Worker {
+        Set(Data)
+        Update()
+        DoSomething()
+    }
+
+    Observer -r[hidden] Worker
+
+    note right of ConcreteWorkerObserver::Update
+      data->Getdata()
+    end note
+
 }
-Interface Worker {
-  DoSomething()
-}
 
-class AWorkerImp extends Worker, Observer {
-  Set(Data)
-  Update()
-  DoSomething()
-}
-
-Subject o- Observer
-
-Subject::Notify -> Observer::Update
-AWorkerImp::Update -> DataImp::GetData 
-
+Subject o-> Observer
+Data <-o Observer
+ConcreteDataSubject::GetData <- ConcreteWorkerObserver::Update
 @enduml
 ```
 
 The Pull Observer Pattern is an alternative observer design. During the *notify()* call, the *Data* information is pulled from the *Subject* by the *Observer* by calling the *Subject*'s getData() function. This design should be used when synchronization between *Observer* and *Subject* is required (e.g. high-precision clock) or when the data is so large that copying takes a while.
 
-***Advantages:***
+#### Advantages
 
-- In heavy load processes during the notify call Data is in sync.
+* In heavy load processes during the notify call Data is in sync.
 
-***Disadvantages:***
+#### Disadvantages
 
-- *Observer* knows something about the *Subject* because the *Observer* invoked a function of the *Subject*
-- Another layer of abstraction is required
+* Observer knows something about the Subject because the Observer invoked a function of the Subject e.g. The Data interface
+* Another layer of abstraction is required
