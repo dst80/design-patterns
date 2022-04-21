@@ -1,7 +1,7 @@
-Design Pattern
+Design Pattern Cheat Sheet
 ====
 
-Short summary of the different design patterns
+Short summary of the different design patterns as my personal cheatsheet ;)
 
 ***Work in Progress***
 
